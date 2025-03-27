@@ -22,8 +22,6 @@ else:
     if args.GDB:
         gdb.attach(r, gdbscript)
 
-hlog = lambda x: log.info(f"{hex(x)=}")
-
 
 
 r.interactive()

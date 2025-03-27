@@ -1,10 +1,6 @@
-[![Checks Status](https://github.com/io12/pwninit/workflows/checks/badge.svg)](https://github.com/io12/pwninit/actions)
-[![Deploy Status](https://github.com/io12/pwninit/workflows/deploy/badge.svg)](https://github.com/io12/pwninit/actions)
-[![](https://img.shields.io/crates/v/pwninit)](https://crates.io/crates/pwninit)
-[![](https://docs.rs/pwninit/badge.svg)](https://docs.rs/pwninit)
-
 # `pwninit`
 
+Fork of [io12/pwninit](https://github.com/io12/pwninit) with some customizations.
 A tool for automating starting binary exploit challenges
 
 ## Features

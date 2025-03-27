@@ -2,29 +2,28 @@
 
 from pwn import *
 
+context.terminal = ["tmux", "splitw", "-h"]
+
 {bindings}
 
 context.binary = {bin_name}
 
+nc = "".split()
+HOST = nc[1]
+PORT = int(nc[2])
 
-def conn():
-    if args.LOCAL:
-        r = process({proc_args})
-        if args.GDB:
-            gdb.attach(r)
-    else:
-        r = remote("addr", 1337)
+gdbscript = """
+"""
 
-    return r
+if args.REMOTE:
+    r = remote(HOST, PORT)
+else:
+    r = process({proc_args})
+    if args.GDB:
+        gdb.attach(r, gdbscript)
 
-
-def main():
-    r = conn()
-
-    # good luck pwning :)
-
-    r.interactive()
+hlog = lambda x: log.info(f"{hex(x)=}")
 
 
-if __name__ == "__main__":
-    main()
+
+r.interactive()

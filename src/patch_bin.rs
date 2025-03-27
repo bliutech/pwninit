@@ -124,8 +124,9 @@ fn bin_patched_path_from_bin(bin: &Path) -> Result<PathBuf> {
 }
 
 /// Add "_patched" to the end of the binary file name if the binary got patched.
+/// Skip if there is no libc or if the user disabled patching.
 pub fn bin_patched_path(opts: &Opts) -> Option<PathBuf> {
-    match opts.no_patch_bin {
+    match opts.no_patch_bin || opts.libc.is_none() {
         true => None,
         false => opts
             .bin

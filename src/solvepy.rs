@@ -38,10 +38,11 @@ pub type Result<T> = std::result::Result<T, Error>;
 /// variables
 fn make_bindings(opts: &Opts) -> String {
     // Helper to make one binding line
+    /// Set checksec=False by default to reduce verbosity
     fn bind_line<P: AsRef<Path>>(name: &str, opt_path: Option<P>) -> Option<String> {
         opt_path
             .as_ref()
-            .map(|path| format!("{} = ELF(\"{}\")", name, path.as_ref().display(),))
+            .map(|path| format!("{} = ELF(\"{}\", checksec=False)", name, path.as_ref().display(),))
     }
 
     // Create bindings and join them with newlines
